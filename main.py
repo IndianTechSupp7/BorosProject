@@ -46,7 +46,7 @@ class App(tk.CTk):
 
 
     def send_command(self, command):
-        self.ser.write(f"{command}\n".encode())
+        self.ser.write(f"{command}".encode())
 
     def handle_arduino(self):
         try:
@@ -54,7 +54,7 @@ class App(tk.CTk):
                 if self.ser.in_waiting > 0:
                     line = self.ser.readline().decode('utf-8').rstrip()
                     print(f"Received data: {line}")
-                    self.hm.set(str(round(float(line))))
+                    self.hm.set(str(round(float(line), 1)))
 
         except KeyboardInterrupt:
             print("Exiting...")
