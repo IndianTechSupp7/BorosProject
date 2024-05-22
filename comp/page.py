@@ -6,3 +6,5 @@ class Page(tk.CTkFrame):
         super().__init__(master = master, *args, **kwargs)
         self.grid_propagate(False)
 
+
+
