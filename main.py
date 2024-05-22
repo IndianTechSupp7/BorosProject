@@ -22,6 +22,7 @@ class App(tk.CTk):
         self.hm = tk.StringVar(value="20")
 
 
+
         # oldalak kezelése
         Page.current = "home" # kezdő oldal
         self.tmp_page = Page.current
@@ -39,10 +40,14 @@ class App(tk.CTk):
 
         self.ser = serial.Serial(arduino_port, baud_rate, timeout=timeout)
         time.sleep(2)
+        self.cursor = True
+
+
 
     @staticmethod
     def go2page(page):
         Page.current = page
+
 
 
     def send_command(self, command):
@@ -60,8 +65,9 @@ class App(tk.CTk):
             print("Exiting...")
 
 
-    def update(self):
 
+
+    def update(self):
         # oldalak kezelése
         if Page.current != self.tmp_page:
             self.pages[Page.current].pack(fill='both', expand=True)
